@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>شركة الهشام للإستثمار والتطوير العقاري</title>
+<meta name="description" content="شركة الهشام للإستثمار والتطوير العقاري - بني سويف. شقق ومحلات ومشاريع استثمارية بأنظمة سداد مرنة.">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;800;900&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+
+<!-- ═══════════════════════════════════════════════════════════
+     ✏️ الخطوة الوحيدة المطلوبة منك:
+     بعد ما تعمل مشروع Firebase (التعليمات في ملف خطوات-التشغيل)
+     هتاخد الإعدادات بتاعتك وتلزقها هنا تحت مكان الكلام ده ⬇
+     ═══════════════════════════════════════════════════════════ -->
+<script>
+const firebaseConfig = {
+  apiKey: "الصق-هنا",
+  authDomain: "الصق-هنا",
+  databaseURL: "الصق-هنا",
+  projectId: "الصق-هنا",
+  storageBucket: "الصق-هنا",
+  messagingSenderId: "الصق-هنا",
+  appId: "الصق-هنا"
+};
+</script>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
+
+<style>
+:root{--ink:#122620;--deep:#0E3B33;--sand:#F5EFE3;--cream:#FBF8F1;--brass:#C9A227;--brass-dark:#A88718;--gray:#6b7a74;--radius:16px;--shadow:0 10px 40px rgba(18,38,32,.10)}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Tajawal',sans-serif;background:var(--cream);color:var(--ink);line-height:1.8}
+h1,h2,h3,h4{font-family:'Cairo',sans-serif}
+img{display:block;max-width:100%}
+a{text-decoration:none;color:inherit}
+.container{width:min(1180px,92%);margin:0 auto}
+.btn{display:inline-block;padding:13px 30px;border-radius:50px;font-weight:700;font-family:'Cairo';transition:.3s;cursor:pointer;border:none;font-size:1rem}
+.btn-gold{background:var(--brass);color:var(--ink)}
+.btn-gold:hover{background:#fff}
+.btn-deep{background:var(--deep);color:#fff}
+.btn-deep:hover{background:var(--brass);color:var(--ink)}
+.topbar{background:var(--ink);color:#cfe0da;font-size:.85rem;padding:8px 0}
+.topbar .container{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.topbar b{color:var(--brass)}
+header{position:sticky;top:0;z-index:100;background:rgba(251,248,241,.94);backdrop-filter:blur(10px);border-bottom:1px solid rgba(18,38,32,.08)}
+nav{display:flex;align-items:center;justify-content:space-between;padding:12px 0;gap:10px}
+.logo{display:flex;align-items:center;gap:10px;font-family:'Cairo';font-weight:900;font-size:1.25rem}
+.logo .mark{width:46px;height:46px;border-radius:12px;background:var(--deep);color:var(--brass);display:grid;place-items:center;font-size:1.3rem;overflow:hidden;flex-shrink:0}
+.logo .mark img{width:100%;height:100%;object-fit:cover}
+.logo small{display:block;font-family:'Tajawal';font-weight:400;font-size:.65rem;color:var(--gray);letter-spacing:1.5px}
+.nav-links{display:flex;gap:24px;list-style:none;font-weight:500}
+.nav-links a{position:relative;padding:6px 0}
+.nav-links a::after{content:'';position:absolute;bottom:0;right:0;width:0;height:2px;background:var(--brass);transition:.3s}
+.nav-links a:hover::after{width:100%}
+.burger{display:none;background:none;border:none;font-size:1.6rem;cursor:pointer;color:var(--ink)}
+.hero{position:relative;min-height:82vh;display:grid;align-items:center;color:#fff;isolation:isolate}
+.hero-bg{position:absolute;inset:0;z-index:-2;background-size:cover;background-position:center}
+.hero::after{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(14,59,51,.93) 0%,rgba(14,59,51,.7) 45%,rgba(14,59,51,.25) 100%)}
+.hero-inner{padding:70px 0 110px;max-width:640px}
+.eyebrow{display:inline-flex;gap:8px;background:rgba(201,162,39,.15);border:1px solid rgba(201,162,39,.5);color:var(--brass);padding:6px 16px;border-radius:50px;font-size:.85rem;margin-bottom:18px}
+.hero h1{font-size:clamp(2rem,5vw,3.4rem);font-weight:900;line-height:1.35;margin-bottom:16px}
+.hero p{font-size:1.08rem;color:#dce8e4;margin-bottom:30px}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn-ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.5)}
+.btn-ghost:hover{border-color:var(--brass);color:var(--brass)}
+section{padding:80px 0}
+.sec-head{text-align:center;max-width:620px;margin:0 auto 50px}
+.sec-head .tag{color:var(--brass-dark);font-weight:700;font-size:.9rem}
+.sec-head h2{font-size:clamp(1.7rem,3.5vw,2.4rem);font-weight:900;margin:8px 0 10px}
+.sec-head p{color:var(--gray)}
+.props-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:26px}
+.prop-card{background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:0 4px 20px rgba(18,38,32,.07);transition:.35s;display:flex;flex-direction:column}
+.prop-card:hover{transform:translateY(-7px);box-shadow:var(--shadow)}
+.prop-img{position:relative;height:230px;overflow:hidden;background:var(--sand)}
+.prop-img img{width:100%;height:100%;object-fit:cover;transition:.5s}
+.prop-card:hover .prop-img img{transform:scale(1.06)}
+.badge{position:absolute;top:12px;right:12px;background:var(--brass);color:var(--ink);font-weight:700;font-size:.78rem;padding:5px 14px;border-radius:50px}
+.badge.rent{background:var(--deep);color:#fff}
+.prop-body{padding:20px;flex:1;display:flex;flex-direction:column}
+.prop-price{font-family:'Cairo';font-weight:900;font-size:1.3rem;color:var(--deep)}
+.prop-body h3{font-size:1.08rem;margin:5px 0 3px}
+.prop-loc{color:var(--gray);font-size:.9rem;margin-bottom:14px}
+.prop-loc::before{content:'📍 '}
+.prop-desc{color:var(--gray);font-size:.88rem;border-top:1px solid #efe9dc;padding-top:12px;margin-top:auto}
+.features{background:var(--deep);color:#fff}
+.features .sec-head h2{color:#fff}
+.features .sec-head p{color:#b9cfc8}
+.feat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:24px}
+.feat{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius);padding:30px 24px;transition:.3s}
+.feat:hover{background:rgba(201,162,39,.12);border-color:rgba(201,162,39,.4)}
+.feat .icon{width:54px;height:54px;border-radius:14px;background:var(--brass);color:var(--ink);display:grid;place-items:center;font-size:1.4rem;margin-bottom:16px}
+.feat p{color:#b9cfc8;font-size:.9rem}
+.contact-wrap{display:grid;grid-template-columns:1fr 1.1fr;gap:46px;align-items:start}
+.c-item{display:flex;gap:14px;margin-bottom:22px}
+.c-item .icon{width:48px;height:48px;border-radius:12px;background:var(--sand);display:grid;place-items:center;font-size:1.2rem;flex-shrink:0}
+.c-item p{color:var(--gray);font-size:.95rem;word-break:break-word}
+.card-box{background:#fff;border-radius:var(--radius);padding:30px;box-shadow:var(--shadow);display:grid;gap:14px}
+input,textarea,select{width:100%;padding:12px 14px;border:1.5px solid #e6e1d4;border-radius:10px;font-family:'Tajawal';font-size:.95rem;background:var(--cream);color:var(--ink);outline:none;transition:.3s}
+input:focus,textarea:focus,select:focus{border-color:var(--brass)}
+label.f-label{font-size:.82rem;font-weight:700;color:var(--gray);display:block;margin-bottom:4px}
+.whatsapp{position:fixed;bottom:22px;left:22px;width:56px;height:56px;border-radius:50%;background:#25D366;display:grid;place-items:center;font-size:1.7rem;box-shadow:0 8px 25px rgba(37,211,102,.45);z-index:200;transition:.3s}
+.whatsapp:hover{transform:scale(1.1)}
+footer{background:var(--ink);color:#b9cfc8;padding:60px 0 0}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1.4fr;gap:36px;padding-bottom:44px}
+.footer-grid h4{color:#fff;margin-bottom:16px}
+.footer-grid ul{list-style:none}
+.footer-grid li{margin-bottom:9px}
+.footer-grid a:hover{color:var(--brass)}
+.footer-logo{font-family:'Cairo';font-weight:900;font-size:1.4rem;color:#fff;margin-bottom:12px;display:block}
+.footer-logo span{color:var(--brass)}
+.socials{display:flex;gap:10px;margin-top:16px}
+.socials a{width:38px;height:38px;border-radius:10px;background:rgba(255,255,255,.08);display:grid;place-items:center;transition:.3s}
+.socials a:hover{background:var(--brass)}
+.copyright{border-top:1px solid rgba(255,255,255,.1);padding:18px 0;text-align:center;font-size:.83rem}
+.copyright button{background:none;border:none;color:#4a5f58;cursor:pointer;font-size:.8rem;font-family:'Tajawal'}
+.overlay{position:fixed;inset:0;background:rgba(18,38,32,.6);backdrop-filter:blur(4px);z-index:500;display:none;align-items:center;justify-content:center;padding:20px}
+.overlay.show{display:flex}
+.modal{background:#fff;border-radius:20px;padding:32px;width:min(430px,100%);box-shadow:0 25px 80px rgba(0,0,0,.3)}
+.modal h3{margin-bottom:18px;text-align:center}
+#adminPanel{position:fixed;inset:0;background:var(--cream);z-index:600;display:none;overflow-y:auto}
+#adminPanel.show{display:block}
+.admin-head{background:var(--deep);color:#fff;padding:16px 0;position:sticky;top:0;z-index:10}
+.admin-head .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.admin-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:24px 0}
+.admin-tabs button{padding:10px 22px;border-radius:50px;border:1.5px solid var(--deep);background:#fff;color:var(--deep);font-family:'Cairo';font-weight:700;cursor:pointer;transition:.3s}
+.admin-tabs button.active{background:var(--deep);color:#fff}
+.tab-content{display:none;padding-bottom:80px}
+.tab-content.active{display:block}
+.admin-prop{display:flex;gap:14px;background:#fff;border-radius:14px;padding:14px;box-shadow:0 3px 14px rgba(18,38,32,.07);margin-bottom:14px;align-items:center;flex-wrap:wrap}
+.admin-prop img{width:90px;height:70px;object-fit:cover;border-radius:10px;background:var(--sand)}
+.admin-prop .info{flex:1;min-width:150px}
+.admin-prop .info b{font-family:'Cairo'}
+.admin-prop .info small{color:var(--gray);display:block}
+.admin-prop .actions{display:flex;gap:8px}
+.admin-prop .actions button{padding:8px 16px;border-radius:8px;border:none;cursor:pointer;font-family:'Cairo';font-weight:700}
+.img-preview{width:100%;height:180px;object-fit:cover;border-radius:12px;background:var(--sand);border:2px dashed #d5cdb8}
+.toast{position:fixed;bottom:28px;right:28px;background:var(--deep);color:#fff;padding:14px 26px;border-radius:12px;box-shadow:var(--shadow);z-index:999;display:none;font-weight:700}
+.toast.show{display:block;animation:pop .3s}
+@keyframes pop{from{transform:translateY(20px);opacity:0}to{transform:translateY(0);opacity:1}}
+.form-row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.hint{font-size:.8rem;color:var(--gray)}
+.setup-warn{background:#fff8e1;border:1.5px solid #f0c419;border-radius:12px;padding:16px;font-size:.9rem;margin:20px auto;max-width:800px}
+@media(max-width:820px){
+  .contact-wrap,.form-row2{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+  .nav-links{position:fixed;inset:0 0 auto 0;background:var(--cream);flex-direction:column;padding:90px 30px 40px;gap:18px;transform:translateY(-110%);transition:.4s;box-shadow:var(--shadow);z-index:-1}
+  .nav-links.open{transform:translateY(0)}
+  .burger{display:block}
+}
+</style>
+</head>
+<body>
+
+<div id="setupWarn" class="setup-warn" style="display:none">
+⚠️ <b>الموقع شغال بالبيانات المؤقتة.</b> عشان لوحة التحكم والحفظ يشتغلوا، لازم تكمّل إعداد Firebase (شوف ملف "خطوات التشغيل" المرفق — 10 دقايق بالكتير).
+</div>
+
+<div class="topbar">
+  <div class="container">
+    <span>📞 <b id="tbPhone"></b></span>
+    <span id="tbHours"></span>
+  </div>
+</div>
+
+<header>
+  <nav class="container">
+    <a href="#home" class="logo">
+      <span class="mark" id="logoMark">🏛</span>
+      <span><span id="siteName"></span><small id="siteNameEn"></small></span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home">الرئيسية</a></li>
+      <li><a href="#props">مشاريعنا</a></li>
+      <li><a href="#features">خدماتنا</a></li>
+      <li><a href="#contact">تواصل معنا</a></li>
+    </ul>
+    <button class="burger" id="burger">☰</button>
+  </nav>
+</header>
+
+<section class="hero" id="home">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="container hero-inner">
+    <span class="eyebrow" id="heroBadge"></span>
+    <h1 id="heroTitle"></h1>
+    <p id="heroText"></p>
+    <div class="hero-btns">
+      <a href="#props" class="btn btn-gold">تصفح مشاريعنا</a>
+      <a href="#contact" class="btn btn-ghost">كلمنا دلوقتي</a>
+    </div>
+  </div>
+</section>
+
+<section id="props">
+  <div class="container">
+    <div class="sec-head">
+      <span class="tag">— أحدث العروض —</span>
+      <h2>مشاريعنا وعقاراتنا</h2>
+      <p>اختار من مجموعة منتقاة من أفضل الوحدات المتاحة حالياً</p>
+    </div>
+    <div class="props-grid" id="propsGrid"></div>
+    <p id="noProps" style="display:none;text-align:center;color:var(--gray)">لسه مفيش عقارات مضافة</p>
+  </div>
+</section>
+
+<section class="features" id="features">
+  <div class="container">
+    <div class="sec-head">
+      <span class="tag" style="color:var(--brass)">— ليه تختارنا؟ —</span>
+      <h2>خدماتنا بتفرق معاك</h2>
+    </div>
+    <div class="feat-grid">
+      <div class="feat"><div class="icon">🏗</div><h3>تطوير عقاري</h3><p>مشاريع سكنية وتجارية بأعلى معايير الجودة والتشطيب.</p></div>
+      <div class="feat"><div class="icon">🏠</div><h3>بيع وشراء</h3><p>نساعدك تلاقي وحدتك المناسبة بأفضل سعر وأسرع وقت.</p></div>
+      <div class="feat"><div class="icon">💰</div><h3>أنظمة سداد مرنة</h3><p>تسهيلات وتقسيط يناسب كل الميزانيات.</p></div>
+      <div class="feat"><div class="icon">📋</div><h3>ضمان قانوني</h3><p>عقود موثقة وإجراءات واضحة تحفظ حقك بالكامل.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <div class="sec-head">
+      <span class="tag">— تواصل معنا —</span>
+      <h2>عايز تحجز وحدتك؟ كلمنا</h2>
+    </div>
+    <div class="contact-wrap">
+      <div>
+        <div class="c-item"><span class="icon">📞</span><div><b>اتصل بينا</b><p id="cPhone"></p></div></div>
+        <div class="c-item"><span class="icon">📍</span><div><b>العنوان</b><p id="cAddress"></p></div></div>
+        <div class="c-item"><span class="icon">✉️</span><div><b>الإيميل</b><p id="cEmail"></p></div></div>
+        <div class="c-item"><span class="icon">🕐</span><div><b>مواعيد العمل</b><p id="cHours"></p></div></div>
+      </div>
+      <div class="card-box">
+        <input type="text" id="msgName" placeholder="الاسم بالكامل">
+        <input type="tel" id="msgPhone" placeholder="رقم الموبايل">
+        <textarea id="msgText" rows="4" placeholder="اكتب طلبك هنا..."></textarea>
+        <button class="btn btn-gold" onclick="sendWhatsApp()">📱 إرسال على الواتساب مباشرة</button>
+        <p class="hint" style="text-align:center">هيفتح الواتساب برسالتك جاهزة للإرسال</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<a href="#" id="waFloat" target="_blank" class="whatsapp" aria-label="واتساب">🟢</a>
+
+<footer>
+  <div class="container footer-grid">
+    <div>
+      <span class="footer-logo" id="footerName"></span>
+      <p>شريكك الموثوق في عالم العقارات والتطوير العقاري.</p>
+      <div class="socials" id="socials"></div>
+    </div>
+    <div>
+      <h4>روابط سريعة</h4>
+      <ul>
+        <li><a href="#home">الرئيسية</a></li>
+        <li><a href="#props">مشاريعنا</a></li>
+        <li><a href="#contact">تواصل معنا</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>تواصل معنا</h4>
+      <ul>
+        <li>📞 <span id="fPhone"></span></li>
+        <li>✉️ <span id="fEmail"></span></li>
+        <li>📍 <span id="fAddress"></span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="copyright">
+    جميع الحقوق محفوظة © <span id="crYear"></span> <span id="crName"></span>
+    &nbsp;|&nbsp; <button onclick="openLogin()">⚙ دخول الإدارة</button>
+  </div>
+</footer>
+
+<!-- مودال تسجيل الدخول بالإيميل -->
+<div class="overlay" id="loginOverlay">
+  <div class="modal">
+    <h3>🔐 دخول الإدارة</h3>
+    <div style="display:grid;gap:12px">
+      <input type="email" id="loginEmail" placeholder="إيميل الأدمن">
+      <input type="password" id="loginPass" placeholder="كلمة السر">
+      <button class="btn btn-deep" onclick="tryLogin()" id="loginBtn">دخول</button>
+      <button class="btn" style="background:#eee" onclick="closeLogin()">إلغاء</button>
+      <p class="hint" id="loginErr" style="color:#c0392b;display:none;text-align:center"></p>
+    </div>
+  </div>
+</div>
+
+<!-- لوحة التحكم -->
+<div id="adminPanel">
+  <div class="admin-head">
+    <div class="container">
+      <h3>⚙ لوحة تحكم الموقع</h3>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <span style="font-size:.85rem;align-self:center" id="adminEmail"></span>
+        <button class="btn btn-gold" onclick="saveAll()">💾 حفظ ونشر</button>
+        <button class="btn" style="background:rgba(255,255,255,.15);color:#fff" onclick="logout()">تسجيل خروج</button>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="admin-tabs">
+      <button class="active" onclick="showTab(event,'tabInfo')">🏢 بيانات الشركة</button>
+      <button onclick="showTab(event,'tabProps')">🏠 العقارات</button>
+      <button onclick="showTab(event,'tabImgs')">🖼 اللوجو والصور</button>
+    </div>
+
+    <div class="tab-content active" id="tabInfo">
+      <div class="card-box">
+        <div class="form-row2">
+          <div><label class="f-label">اسم الشركة (عربي)</label><input id="aName"></div>
+          <div><label class="f-label">الاسم بالإنجليزي</label><input id="aNameEn"></div>
+        </div>
+        <div class="form-row2">
+          <div><label class="f-label">رقم التليفون</label><input id="aPhone" placeholder="مثال: 01000000000"></div>
+          <div><label class="f-label">رقم الواتساب (بكود الدولة)</label><input id="aWhats" placeholder="مثال: 201000000000"></div>
+        </div>
+        <div class="form-row2">
+          <div><label class="f-label">الإيميل</label><input id="aEmail"></div>
+          <div><label class="f-label">مواعيد العمل</label><input id="aHours"></div>
+        </div>
+        <div><label class="f-label">العنوان</label><input id="aAddress"></div>
+        <div><label class="f-label">الشارة فوق العنوان الرئيسي</label><input id="aBadge"></div>
+        <div><label class="f-label">العنوان الرئيسي في أول الصفحة</label><input id="aHeroTitle"></div>
+        <div><label class="f-label">الوصف تحت العنوان</label><textarea id="aHeroText" rows="2"></textarea></div>
+        <div class="form-row2">
+          <div><label class="f-label">لينك صفحة الفيسبوك</label><input id="aFb"></div>
+          <div><label class="f-label">لينك التيك توك</label><input id="aTk"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-content" id="tabProps">
+      <div class="card-box" style="margin-bottom:24px">
+        <h3 id="propFormTitle">➕ إضافة عقار جديد</h3>
+        <div class="form-row2">
+          <div><label class="f-label">اسم العقار / المشروع</label><input id="pTitle"></div>
+          <div><label class="f-label">المكان</label><input id="pLoc"></div>
+        </div>
+        <div class="form-row2">
+          <div><label class="f-label">السعر (زي ما تحب يظهر)</label><input id="pPrice" placeholder="مثال: 2,500,000 جنيه"></div>
+          <div><label class="f-label">النوع</label>
+            <select id="pBadge"><option value="للبيع">للبيع</option><option value="للإيجار">للإيجار</option><option value="استلام فوري">استلام فوري</option><option value="بالتقسيط">بالتقسيط</option></select>
+          </div>
+        </div>
+        <div><label class="f-label">تفاصيل (غرف، مساحة، إلخ)</label><input id="pDesc" placeholder="مثال: 🛏 3 غرف • 📐 160 م²"></div>
+        <div>
+          <label class="f-label">صورة العقار</label>
+          <input type="file" accept="image/*" id="pImgFile" onchange="previewPropImg(this)">
+          <img class="img-preview" id="pImgPreview" style="margin-top:10px;display:none">
+        </div>
+        <div style="display:flex;gap:10px">
+          <button class="btn btn-deep" onclick="addOrUpdateProp()" id="propSaveBtn">إضافة العقار</button>
+          <button class="btn" style="background:#eee;display:none" id="propCancelBtn" onclick="resetPropForm()">إلغاء التعديل</button>
+        </div>
+      </div>
+      <h3 style="margin-bottom:14px">العقارات الحالية:</h3>
+      <div id="adminPropsList"></div>
+    </div>
+
+    <div class="tab-content" id="tabImgs">
+      <div class="card-box" style="margin-bottom:20px">
+        <h3>🏛 لوجو الشركة</h3>
+        <p class="hint">الأفضل صورة مربعة.</p>
+        <input type="file" accept="image/*" onchange="uploadImg(this,'logo',200)">
+        <img class="img-preview" id="logoPreview" style="max-width:200px;height:120px">
+      </div>
+      <div class="card-box">
+        <h3>🌆 صورة الخلفية الرئيسية</h3>
+        <p class="hint">الصورة الكبيرة أول الموقع. الأفضل صورة عرضية لمشروع من مشاريعكم.</p>
+        <input type="file" accept="image/*" onchange="uploadImg(this,'hero',1400)">
+        <img class="img-preview" id="heroPreview">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ============ البيانات الافتراضية ============ */
+const DEFAULT_DATA = {
+  name: "الهشام العقارية",
+  nameEn: "EL HESHAM REAL ESTATE",
+  fullName: "شركة الهشام للإستثمار والتطوير العقاري",
+  phone: "—",
+  whatsapp: "",
+  email: "info@alhisham-realstate.com",
+  address: "بني سويف - شرق النيل - الحي الأول - شارع الأندلس العمومي",
+  hours: "السبت - الخميس | 10 ص - 10 م",
+  badge: "⭐ شركة رائدة في التطوير العقاري ببني سويف",
+  heroTitle: "الهشام العقارية.. بنبني الثقة قبل ما نبني الحجر",
+  heroText: "شقق، محلات إدارية وتجارية ومشاريع استثمارية بأنظمة سداد مرنة، ومعاك خطوة بخطوة لحد استلام المفتاح.",
+  fb: "https://www.facebook.com/alhisham.egypt/",
+  tk: "https://www.tiktok.com/@alhesham_develop",
+  logo: "",
+  heroImg: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1600&q=80",
+  props: [
+    {id:1, title:"وحدات تجارية وإدارية - مشروع حياه مول", loc:"حياه مول - بني سويف", price:"اتصل للسعر", badge:"استلام فوري", desc:"🏪 وحدات بمساحات متنوعة • موقع حيوي", img:"https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&q=80"},
+    {id:2, title:"شقة سوبر لوكس", loc:"بني سويف الجديدة - شرق النيل", price:"اتصل للسعر", badge:"للبيع", desc:"🛏 3 غرف • 🚿 2 حمام • 📐 160 م²", img:"https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&q=80"}
+  ]
+};
+let DATA = JSON.parse(JSON.stringify(DEFAULT_DATA));
+let editingId = null, tempPropImg = "";
+let db = null, auth = null, firebaseReady = false;
+
+/* ============ تشغيل Firebase ============ */
+try{
+  if(firebaseConfig.apiKey && firebaseConfig.apiKey !== "الصق-هنا"){
+    firebase.initializeApp(firebaseConfig);
+    db = firebase.database();
+    auth = firebase.auth();
+    firebaseReady = true;
+  }
+}catch(e){ console.warn('Firebase غير مفعّل:', e); }
+
+if(!firebaseReady){
+  document.getElementById('setupWarn').style.display='block';
+  renderSite();
+}else{
+  // قراءة مباشرة (لحظية) من قاعدة البيانات
+  db.ref('site').on('value', snap=>{
+    const v = snap.val();
+    if(v){ DATA = v; if(!DATA.props) DATA.props = []; }
+    renderSite();
+    if(document.getElementById('adminPanel').classList.contains('show')) renderAdminProps();
+  }, err=>{ console.warn(err); renderSite(); });
+  // متابعة حالة تسجيل الدخول
+  auth.onAuthStateChanged(user=>{
+    if(user) document.getElementById('adminEmail').textContent = user.email;
+  });
+}
+
+async function persist(){
+  if(!firebaseReady){ toast('⚠️ Firebase مش متفعّل — راجع ملف خطوات التشغيل'); return false; }
+  if(!auth.currentUser){ toast('⚠️ لازم تسجل دخول الأول'); return false; }
+  try{ await db.ref('site').set(DATA); return true; }
+  catch(e){ toast('⚠️ الحفظ فشل: '+(e.message||'')); return false; }
+}
+
+/* ============ عرض الموقع ============ */
+function renderSite(){
+  const d = DATA;
+  setText('siteName', d.name); setText('siteNameEn', d.nameEn);
+  setText('tbPhone', d.phone); setText('tbHours', 'مواعيد العمل: '+d.hours);
+  setText('heroBadge', d.badge);
+  setText('heroTitle', d.heroTitle);
+  setText('heroText', d.heroText);
+  setText('cPhone', d.phone); setText('cAddress', d.address); setText('cEmail', d.email); setText('cHours', d.hours);
+  setText('fPhone', d.phone); setText('fEmail', d.email); setText('fAddress', d.address);
+  setText('footerName', d.name); setText('crName', d.fullName);
+  setText('crYear', new Date().getFullYear());
+  document.getElementById('heroBg').style.backgroundImage = `url('${d.heroImg}')`;
+  const mark = document.getElementById('logoMark');
+  mark.innerHTML = d.logo ? `<img src="${d.logo}" alt="لوجو">` : '🏛';
+  const wa = document.getElementById('waFloat');
+  if(d.whatsapp){ wa.href = 'https://wa.me/'+String(d.whatsapp).replace(/\D/g,''); wa.style.display='grid'; }
+  else wa.style.display='none';
+  let socials = '';
+  if(d.fb) socials += `<a href="${d.fb}" target="_blank" rel="noopener" aria-label="فيسبوك">📘</a>`;
+  if(d.tk) socials += `<a href="${d.tk}" target="_blank" rel="noopener" aria-label="تيك توك">🎵</a>`;
+  document.getElementById('socials').innerHTML = socials;
+  renderProps();
+}
+function renderProps(){
+  const grid = document.getElementById('propsGrid');
+  const empty = document.getElementById('noProps');
+  const props = DATA.props||[];
+  if(!props.length){ grid.innerHTML=''; empty.style.display='block'; return; }
+  empty.style.display='none';
+  grid.innerHTML = props.map(p=>`
+    <div class="prop-card">
+      <div class="prop-img">
+        ${p.img?`<img src="${p.img}" alt="${esc(p.title)}" loading="lazy">`:''}
+        <span class="badge ${p.badge==='للإيجار'?'rent':''}">${esc(p.badge)}</span>
+      </div>
+      <div class="prop-body">
+        <div class="prop-price">${esc(p.price)}</div>
+        <h3>${esc(p.title)}</h3>
+        <div class="prop-loc">${esc(p.loc)}</div>
+        <div class="prop-desc">${esc(p.desc)}</div>
+      </div>
+    </div>`).join('');
+}
+function setText(id,v){ const el=document.getElementById(id); if(el) el.textContent = v||''; }
+function esc(s){ return String(s||'').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+/* ============ واتساب ============ */
+function sendWhatsApp(){
+  if(!DATA.whatsapp){ toast('⚠️ رقم الواتساب مش متسجل لسه'); return; }
+  const n = document.getElementById('msgName').value.trim();
+  const p = document.getElementById('msgPhone').value.trim();
+  const t = document.getElementById('msgText').value.trim();
+  const msg = encodeURIComponent(`الاسم: ${n}\nالموبايل: ${p}\nالطلب: ${t}`);
+  window.open('https://wa.me/'+String(DATA.whatsapp).replace(/\D/g,'')+'?text='+msg,'_blank');
+}
+
+/* ============ تسجيل الدخول (Firebase Auth) ============ */
+function openLogin(){
+  if(!firebaseReady){ alert('لوحة التحكم هتشتغل بعد ما تكمّل إعداد Firebase — راجع ملف "خطوات التشغيل" المرفق مع الموقع.'); return; }
+  if(auth.currentUser){ openAdmin(); return; }
+  document.getElementById('loginOverlay').classList.add('show');
+}
+function closeLogin(){ document.getElementById('loginOverlay').classList.remove('show'); document.getElementById('loginErr').style.display='none'; }
+async function tryLogin(){
+  const email = document.getElementById('loginEmail').value.trim();
+  const pass = document.getElementById('loginPass').value;
+  const err = document.getElementById('loginErr');
+  const btn = document.getElementById('loginBtn');
+  btn.textContent='⏳ لحظة...'; btn.disabled=true;
+  try{
+    await auth.signInWithEmailAndPassword(email, pass);
+    closeLogin();
+    document.getElementById('loginEmail').value='';
+    document.getElementById('loginPass').value='';
+    openAdmin();
+  }catch(e){
+    err.textContent = 'الإيميل أو كلمة السر غلط ❌';
+    err.style.display='block';
+  }
+  btn.textContent='دخول'; btn.disabled=false;
+}
+function logout(){ auth.signOut(); closeAdmin(); toast('تم تسجيل الخروج'); }
+
+/* ============ لوحة التحكم ============ */
+const FIELD_MAP = {aName:'name',aNameEn:'nameEn',aPhone:'phone',aWhats:'whatsapp',aEmail:'email',aHours:'hours',aAddress:'address',aBadge:'badge',aHeroTitle:'heroTitle',aHeroText:'heroText',aFb:'fb',aTk:'tk'};
+function openAdmin(){
+  Object.keys(FIELD_MAP).forEach(id=>{ document.getElementById(id).value = DATA[FIELD_MAP[id]]||''; });
+  document.getElementById('logoPreview').src = DATA.logo||'';
+  document.getElementById('heroPreview').src = DATA.heroImg||'';
+  renderAdminProps();
+  document.getElementById('adminPanel').classList.add('show');
+}
+function closeAdmin(){ document.getElementById('adminPanel').classList.remove('show'); }
+function showTab(e,id){
+  document.querySelectorAll('.admin-tabs button').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active'));
+  e.target.classList.add('active');
+  document.getElementById(id).classList.add('active');
+}
+async function saveAll(){
+  Object.keys(FIELD_MAP).forEach(id=>{ DATA[FIELD_MAP[id]] = document.getElementById(id).value.trim(); });
+  DATA.fullName = "شركة الهشام للإستثمار والتطوير العقاري";
+  if(await persist()){ renderSite(); toast('✅ تم الحفظ والنشر لكل الزوار'); }
+}
+
+/* ============ إدارة العقارات ============ */
+function renderAdminProps(){
+  const list = document.getElementById('adminPropsList');
+  const props = DATA.props||[];
+  if(!props.length){ list.innerHTML='<p class="hint">مفيش عقارات مضافة لسه</p>'; return; }
+  list.innerHTML = props.map(p=>`
+    <div class="admin-prop">
+      ${p.img?`<img src="${p.img}">`:'<div style="width:90px;height:70px;border-radius:10px;background:var(--sand);display:grid;place-items:center">🏠</div>'}
+      <div class="info"><b>${esc(p.title)}</b><small>${esc(p.loc)} • ${esc(p.price)}</small></div>
+      <div class="actions">
+        <button style="background:var(--sand)" onclick="editProp(${p.id})">✏️ تعديل</button>
+        <button style="background:#fdecea;color:#c0392b" onclick="delProp(${p.id})">🗑 حذف</button>
+      </div>
+    </div>`).join('');
+}
+function previewPropImg(input){
+  compressImage(input.files[0], 900, b64=>{
+    tempPropImg = b64;
+    const pv = document.getElementById('pImgPreview');
+    pv.src = b64; pv.style.display='block';
+  });
+}
+async function addOrUpdateProp(){
+  const title = document.getElementById('pTitle').value.trim();
+  if(!title){ toast('⚠️ اكتب اسم العقار الأول'); return; }
+  const obj = {
+    title,
+    loc: document.getElementById('pLoc').value.trim(),
+    price: document.getElementById('pPrice').value.trim()||'اتصل للسعر',
+    badge: document.getElementById('pBadge').value,
+    desc: document.getElementById('pDesc').value.trim()
+  };
+  if(!DATA.props) DATA.props = [];
+  if(editingId){
+    const p = DATA.props.find(x=>x.id===editingId);
+    Object.assign(p, obj);
+    if(tempPropImg) p.img = tempPropImg;
+  } else {
+    obj.id = Date.now();
+    obj.img = tempPropImg||'';
+    DATA.props.unshift(obj);
+  }
+  if(await persist()){ renderSite(); renderAdminProps(); resetPropForm(); toast('✅ تم حفظ العقار'); }
+}
+function editProp(id){
+  const p = DATA.props.find(x=>x.id===id);
+  if(!p) return;
+  editingId = id; tempPropImg = '';
+  document.getElementById('pTitle').value=p.title;
+  document.getElementById('pLoc').value=p.loc;
+  document.getElementById('pPrice').value=p.price;
+  document.getElementById('pBadge').value=p.badge;
+  document.getElementById('pDesc').value=p.desc;
+  const pv=document.getElementById('pImgPreview');
+  if(p.img){pv.src=p.img;pv.style.display='block';}else pv.style.display='none';
+  document.getElementById('propFormTitle').textContent='✏️ تعديل العقار';
+  document.getElementById('propSaveBtn').textContent='حفظ التعديل';
+  document.getElementById('propCancelBtn').style.display='inline-block';
+}
+async function delProp(id){
+  if(!confirm('متأكد إنك عايز تحذف العقار ده؟')) return;
+  DATA.props = DATA.props.filter(x=>x.id!==id);
+  if(await persist()){ renderSite(); renderAdminProps(); toast('🗑 تم الحذف'); }
+}
+function resetPropForm(){
+  editingId=null; tempPropImg='';
+  ['pTitle','pLoc','pPrice','pDesc'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('pImgFile').value='';
+  document.getElementById('pImgPreview').style.display='none';
+  document.getElementById('propFormTitle').textContent='➕ إضافة عقار جديد';
+  document.getElementById('propSaveBtn').textContent='إضافة العقار';
+  document.getElementById('propCancelBtn').style.display='none';
+}
+
+/* ============ رفع الصور ============ */
+function uploadImg(input, type, maxW){
+  compressImage(input.files[0], maxW, async b64=>{
+    if(type==='logo'){ DATA.logo=b64; document.getElementById('logoPreview').src=b64; }
+    else{ DATA.heroImg=b64; document.getElementById('heroPreview').src=b64; }
+    if(await persist()){ renderSite(); toast('✅ تم رفع الصورة ونشرها'); }
+  });
+}
+function compressImage(file, maxW, cb){
+  if(!file) return;
+  const img = new Image();
+  const reader = new FileReader();
+  reader.onload = e=>{ img.src = e.target.result; };
+  img.onload = ()=>{
+    const scale = Math.min(1, maxW/img.width);
+    const c = document.createElement('canvas');
+    c.width = Math.round(img.width*scale); c.height = Math.round(img.height*scale);
+    c.getContext('2d').drawImage(img,0,0,c.width,c.height);
+    cb(c.toDataURL('image/jpeg', 0.82));
+  };
+  reader.readAsDataURL(file);
+}
+
+/* ============ أدوات ============ */
+function toast(msg){
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'), 2800);
+}
+const burger=document.getElementById('burger');
+const navLinks=document.getElementById('navLinks');
+burger.addEventListener('click',()=>navLinks.classList.toggle('open'));
+navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>navLinks.classList.remove('open')));
+document.getElementById('loginPass').addEventListener('keydown',e=>{ if(e.key==='Enter') tryLogin(); });
+</script>
+</body>
+</html>
